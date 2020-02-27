@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guohao.account.mapper.base.WjjwBaseMapper">
+
+    <delete id="deleteWjjw" parameterType="java.lang.Integer">
+    delete from wjjw
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insertWjjw"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `wjjw`
+        (
+        <trim suffixOverrides=",">
+                    <if test="id!=null">
+                        `id`,
+                    </if>
+                    <if test="machineName!=null">
+                        `machineName`,
+                    </if>
+                    <if test="workPlace!=null">
+                        `workPlace`,
+                    </if>
+                    <if test="startTime!=null">
+                        `startTime`,
+                    </if>
+                    <if test="endTime!=null">
+                        `endTime`,
+                    </if>
+                    <if test="workHours!=null">
+                        `workHours`,
+                    </if>
+                    <if test="unitPrice!=null">
+                        `unitPrice`,
+                    </if>
+                    <if test="totalSum!=null">
+                        `totalSum`,
+                    </if>
+                    <if test="flatcarCount!=null">
+                        `flatcarCount`,
+                    </if>
+                    <if test="flatcarFee!=null">
+                        `flatcarFee`,
+                    </if>
+                    <if test="other!=null">
+                        `other`,
+                    </if>
+                    <if test="workDate!=null">
+                        `workDate`,
+                    </if>
+                    <if test="localPath!=null">
+                         `localPath`,
+                    </if>
+                    <if test="fileName!=null">
+                        `fileName`,
+                    </if>
+
+                    <if test="created_at!=null">
+                        `created_at`,
+                    </if>
+                    <if test="updated_at!=null">
+                        `updated_at`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="machineName!=null">
+                    #{machineName},
+                </if>
+                <if test="workPlace!=null">
+                    #{workPlace},
+                </if>
+                <if test="startTime!=null">
+                    #{startTime},
+                </if>
+                <if test="endTime!=null">
+                    #{endTime},
+                </if>
+                <if test="workHours!=null">
+                    #{workHours},
+                </if>
+                <if test="unitPrice!=null">
+                    #{unitPrice},
+                </if>
+                <if test="totalSum!=null">
+                    #{totalSum},
+                </if>
+                <if test="flatcarCount!=null">
+                    #{flatcarCount},
+                </if>
+                <if test="flatcarFee!=null">
+                    #{flatcarFee},
+                </if>
+                <if test="other!=null">
+                    #{other},
+                </if>
+                <if test="workDate!=null">
+                    #{workDate},
+                </if>
+                <if test="localPath!=null">
+                    #{localPath},
+                </if>
+                <if test="fileName!=null">
+                    #{fileName},
+                </if>
+                <if test="created_at!=null">
+                    #{created_at},
+                </if>
+                <if test="updated_at!=null">
+                    #{updated_at},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+    <update id="updateWjjw">
+        UPDATE `wjjw`
+        SET
+        <trim suffixOverrides=",">
+            <if test="machineName != null and machineName!=''">
+                `machineName` = #{machineName},
+            </if>
+            <if test="workPlace != null and workPlace!=''">
+                `workPlace` = #{workPlace},
+            </if>
+            <if test="startTime != null">
+                `startTime` = #{startTime},
+            </if>
+            <if test="endTime != null">
+                `endTime` = #{endTime},
+            </if>
+            <if test="workHours != null">
+                `workHours` = #{workHours},
+            </if>
+            <if test="unitPrice != null">
+                `unitPrice` = #{unitPrice},
+            </if>
+            <if test="totalSum != null">
+                `totalSum` = #{totalSum},
+            </if>
+            <if test="flatcarCount != null">
+                `flatcarCount` = #{flatcarCount},
+            </if>
+            <if test="flatcarFee != null">
+                `flatcarFee` = #{flatcarFee},
+            </if>
+            <if test="other != null and other!=''">
+                `other` = #{other},
+            </if>
+            <if test="workDate != null">
+                `workDate` = #{workDate},
+            </if>
+            <if test="localPath!=null">
+                `localPath`=#{localPath},
+            </if>
+            <if test="fileName!=null">
+                `fileName`=#{fileName},
+            </if>
+            <if test="created_at != null">
+                `created_at` = #{created_at},
+            </if>
+            <if test="updated_at != null">
+                `updated_at` = #{updated_at},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `id` = #{id} and
+        </trim>
+    </update>
+
+    <update id="update">
+        UPDATE `wjjw`
+        SET
+        <trim suffixOverrides=",">
+        <if test="set.machineName != null and set.machineName!=''">
+            `machineName` = #{set.machineName},
+        </if>
+        <if test="set.workPlace != null and set.workPlace!=''">
+            `workPlace` = #{set.workPlace},
+        </if>
+        <if test="set.startTime != null">
+            `startTime` = #{set.startTime},
+        </if>
+        <if test="set.endTime != null">
+            `endTime` = #{set.endTime},
+        </if>
+        <if test="set.workHours != null">
+            `workHours` = #{set.workHours},
+        </if>
+        <if test="set.unitPrice != null">
+            `unitPrice` = #{set.unitPrice},
+        </if>
+        <if test="set.totalSum != null">
+            `totalSum` = #{set.totalSum},
+        </if>
+        <if test="set.flatcarCount != null">
+            `flatcarCount` = #{set.flatcarCount},
+        </if>
+        <if test="set.flatcarFee != null">
+            `flatcarFee` = #{set.flatcarFee},
+        </if>
+        <if test="set.other != null and set.other!=''">
+            `other` = #{set.other},
+        </if>
+        <if test="set.workDate != null">
+            `workDate` = #{set.workDate},
+        </if>
+        <if test="set.created_at != null">
+            `created_at` = #{set.created_at},
+        </if>
+        <if test="set.updated_at != null">
+            `updated_at` = #{set.updated_at},
+        </if>
+        </trim>
+        <trim prefix="where" suffixOverrides="and | or">
+                <if test="where.idList != null">
+                    `id` in
+                    <foreach collection="where.idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.idSt !=null">
+                `id` >= #{where.idSt} and
+            </if>
+            <if test="where.idEd!=null">
+                `id` &lt;= #{where.idEd} and
+            </if>
+                <if test="where.machineNameList != null">
+                    `machineName` in
+                    <foreach collection="where.machineNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyMachineName!=null and where.fuzzyMachineName.size()>0">
+                (
+                <foreach collection="where.fuzzyMachineName"  separator="or" item="item">
+                    `MachineName` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyMachineName!=null and where.rightFuzzyMachineName.size()>0">
+                (
+                <foreach collection="where.rightFuzzyMachineName"  separator="or" item="item">
+                    `MachineName` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.workPlaceList != null">
+                    `workPlace` in
+                    <foreach collection="where.workPlaceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyWorkPlace!=null and where.fuzzyWorkPlace.size()>0">
+                (
+                <foreach collection="where.fuzzyWorkPlace"  separator="or" item="item">
+                    `WorkPlace` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyWorkPlace!=null and where.rightFuzzyWorkPlace.size()>0">
+                (
+                <foreach collection="where.rightFuzzyWorkPlace"  separator="or" item="item">
+                    `WorkPlace` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.startTimeList != null">
+                    `startTime` in
+                    <foreach collection="where.startTimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.startTimeSt !=null">
+                `startTime` >= #{where.startTimeSt} and
+            </if>
+            <if test="where.startTimeEd!=null">
+                `startTime` &lt;= #{where.startTimeEd} and
+            </if>
+                <if test="where.endTimeList != null">
+                    `endTime` in
+                    <foreach collection="where.endTimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.endTimeSt !=null">
+                `endTime` >= #{where.endTimeSt} and
+            </if>
+            <if test="where.endTimeEd!=null">
+                `endTime` &lt;= #{where.endTimeEd} and
+            </if>
+                <if test="where.workHoursList != null">
+                    `workHours` in
+                    <foreach collection="where.workHoursList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.workHoursSt !=null">
+                `workHours` >= #{where.workHoursSt} and
+            </if>
+            <if test="where.workHoursEd!=null">
+                `workHours` &lt;= #{where.workHoursEd} and
+            </if>
+                <if test="where.unitPriceList != null">
+                    `unitPrice` in
+                    <foreach collection="where.unitPriceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.unitPriceSt !=null">
+                `unitPrice` >= #{where.unitPriceSt} and
+            </if>
+            <if test="where.unitPriceEd!=null">
+                `unitPrice` &lt;= #{where.unitPriceEd} and
+            </if>
+                <if test="where.totalSumList != null">
+                    `totalSum` in
+                    <foreach collection="where.totalSumList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.totalSumSt !=null">
+                `totalSum` >= #{where.totalSumSt} and
+            </if>
+            <if test="where.totalSumEd!=null">
+                `totalSum` &lt;= #{where.totalSumEd} and
+            </if>
+                <if test="where.flatcarCountList != null">
+                    `flatcarCount` in
+                    <foreach collection="where.flatcarCountList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.flatcarCountSt !=null">
+                `flatcarCount` >= #{where.flatcarCountSt} and
+            </if>
+            <if test="where.flatcarCountEd!=null">
+                `flatcarCount` &lt;= #{where.flatcarCountEd} and
+            </if>
+                <if test="where.flatcarFeeList != null">
+                    `flatcarFee` in
+                    <foreach collection="where.flatcarFeeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.flatcarFeeSt !=null">
+                `flatcarFee` >= #{where.flatcarFeeSt} and
+            </if>
+            <if test="where.flatcarFeeEd!=null">
+                `flatcarFee` &lt;= #{where.flatcarFeeEd} and
+            </if>
+                <if test="where.otherList != null">
+                    `other` in
+                    <foreach collection="where.otherList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyOther!=null and where.fuzzyOther.size()>0">
+                (
+                <foreach collection="where.fuzzyOther"  separator="or" item="item">
+                    `Other` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyOther!=null and where.rightFuzzyOther.size()>0">
+                (
+                <foreach collection="where.rightFuzzyOther"  separator="or" item="item">
+                    `Other` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.workDateList != null">
+                    `workDate` in
+                    <foreach collection="where.workDateList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.workDateSt !=null">
+                `workDate` >= #{where.workDateSt} and
+            </if>
+            <if test="where.workDateEd!=null">
+                `workDate` &lt;= #{where.workDateEd} and
+            </if>
+                <if test="where.created_atList != null">
+                    `created_at` in
+                    <foreach collection="where.created_atList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.created_atSt !=null">
+                `created_at` >= #{where.created_atSt} and
+            </if>
+            <if test="where.created_atEd!=null">
+                `created_at` &lt;= #{where.created_atEd} and
+            </if>
+                <if test="where.updated_atList != null">
+                    `updated_at` in
+                    <foreach collection="where.updated_atList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.updated_atSt !=null">
+                `updated_at` >= #{where.updated_atSt} and
+            </if>
+            <if test="where.updated_atEd!=null">
+                `updated_at` &lt;= #{where.updated_atEd} and
+            </if>
+        </trim>
+    </update>
+
+
+    <resultMap type="com.guohao.account.model.Wjjw" id="wjjwMap">
+        <result property="id" column="id"/>
+        <result property="machineName" column="machineName"/>
+        <result property="workPlace" column="workPlace"/>
+        <result property="startTime" column="startTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="workHours" column="workHours"/>
+        <result property="unitPrice" column="unitPrice"/>
+        <result property="totalSum" column="totalSum"/>
+        <result property="flatcarCount" column="flatcarCount"/>
+        <result property="flatcarFee" column="flatcarFee"/>
+        <result property="other" column="other"/>
+        <result property="workDate" column="workDate"/>
+        <result property="created_at" column="created_at"/>
+        <result property="updated_at" column="updated_at"/>
+    </resultMap>
+
+
+    <select id="queryWjjw" resultMap="wjjwMap">
+        select * from wjjw;
+    </select>
+
+    <select id="queryWjjwLimit1" resultMap="wjjwMap">
+        select
+        <include refid="baseResult"></include>
+        from  `wjjw`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="machineName != null and machineName!=''">
+                `machineName` = #{machineName} and
+            </if>
+            <if test="workPlace != null and workPlace!=''">
+                `workPlace` = #{workPlace} and
+            </if>
+            <if test="startTime != null">
+                `startTime` = #{startTime} and
+            </if>
+            <if test="endTime != null">
+                `endTime` = #{endTime} and
+            </if>
+            <if test="workHours != null">
+                `workHours` = #{workHours} and
+            </if>
+            <if test="unitPrice != null">
+                `unitPrice` = #{unitPrice} and
+            </if>
+            <if test="totalSum != null">
+                `totalSum` = #{totalSum} and
+            </if>
+            <if test="flatcarCount != null">
+                `flatcarCount` = #{flatcarCount} and
+            </if>
+            <if test="flatcarFee != null">
+                `flatcarFee` = #{flatcarFee} and
+            </if>
+            <if test="other != null and other!=''">
+                `other` = #{other} and
+            </if>
+            <if test="workDate != null">
+                `workDate` = #{workDate} and
+            </if>
+            <if test="created_at != null">
+                `created_at` = #{created_at} and
+            </if>
+            <if test="updated_at != null">
+                `updated_at` = #{updated_at} and
+            </if>
+            <if test = "(_parameter instanceof packageModel.wjjw$QueryBuilder) == true">
+                    <if test="idList != null">
+                        `id` in
+                        <foreach collection="idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                    <if test="machineNameList != null">
+                        `machineName` in
+                        <foreach collection="machineNameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyMachineName!=null and fuzzyMachineName.size()>0">
+                    (
+                    <foreach collection="fuzzyMachineName"  separator="or" item="item">
+                        `MachineName` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyMachineName!=null and rightFuzzyMachineName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyMachineName"  separator="or" item="item">
+                        `MachineName` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="workPlaceList != null">
+                        `workPlace` in
+                        <foreach collection="workPlaceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyWorkPlace!=null and fuzzyWorkPlace.size()>0">
+                    (
+                    <foreach collection="fuzzyWorkPlace"  separator="or" item="item">
+                        `WorkPlace` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyWorkPlace!=null and rightFuzzyWorkPlace.size()>0">
+                    (
+                    <foreach collection="rightFuzzyWorkPlace"  separator="or" item="item">
+                        `WorkPlace` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="startTimeList != null">
+                        `startTime` in
+                        <foreach collection="startTimeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="startTimeSt !=null">
+                    `startTime` >= #{startTimeSt} and
+                </if>
+                <if test="startTimeEd!=null">
+                    `startTime` &lt;= #{startTimeEd} and
+                </if>
+                    <if test="endTimeList != null">
+                        `endTime` in
+                        <foreach collection="endTimeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="endTimeSt !=null">
+                    `endTime` >= #{endTimeSt} and
+                </if>
+                <if test="endTimeEd!=null">
+                    `endTime` &lt;= #{endTimeEd} and
+                </if>
+                    <if test="workHoursList != null">
+                        `workHours` in
+                        <foreach collection="workHoursList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="workHoursSt !=null">
+                    `workHours` >= #{workHoursSt} and
+                </if>
+                <if test="workHoursEd!=null">
+                    `workHours` &lt;= #{workHoursEd} and
+                </if>
+                    <if test="unitPriceList != null">
+                        `unitPrice` in
+                        <foreach collection="unitPriceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="unitPriceSt !=null">
+                    `unitPrice` >= #{unitPriceSt} and
+                </if>
+                <if test="unitPriceEd!=null">
+                    `unitPrice` &lt;= #{unitPriceEd} and
+                </if>
+                    <if test="totalSumList != null">
+                        `totalSum` in
+                        <foreach collection="totalSumList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="totalSumSt !=null">
+                    `totalSum` >= #{totalSumSt} and
+                </if>
+                <if test="totalSumEd!=null">
+                    `totalSum` &lt;= #{totalSumEd} and
+                </if>
+                    <if test="flatcarCountList != null">
+                        `flatcarCount` in
+                        <foreach collection="flatcarCountList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="flatcarCountSt !=null">
+                    `flatcarCount` >= #{flatcarCountSt} and
+                </if>
+                <if test="flatcarCountEd!=null">
+                    `flatcarCount` &lt;= #{flatcarCountEd} and
+                </if>
+                    <if test="flatcarFeeList != null">
+                        `flatcarFee` in
+                        <foreach collection="flatcarFeeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="flatcarFeeSt !=null">
+                    `flatcarFee` >= #{flatcarFeeSt} and
+                </if>
+                <if test="flatcarFeeEd!=null">
+                    `flatcarFee` &lt;= #{flatcarFeeEd} and
+                </if>
+                    <if test="otherList != null">
+                        `other` in
+                        <foreach collection="otherList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyOther!=null and fuzzyOther.size()>0">
+                    (
+                    <foreach collection="fuzzyOther"  separator="or" item="item">
+                        `Other` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyOther!=null and rightFuzzyOther.size()>0">
+                    (
+                    <foreach collection="rightFuzzyOther"  separator="or" item="item">
+                        `Other` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="workDateList != null">
+                        `workDate` in
+                        <foreach collection="workDateList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="workDateSt !=null">
+                    `workDate` >= #{workDateSt} and
+                </if>
+                <if test="workDateEd!=null">
+                    `workDate` &lt;= #{workDateEd} and
+                </if>
+                    <if test="created_atList != null">
+                        `created_at` in
+                        <foreach collection="created_atList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="created_atSt !=null">
+                    `created_at` >= #{created_atSt} and
+                </if>
+                <if test="created_atEd!=null">
+                    `created_at` &lt;= #{created_atEd} and
+                </if>
+                    <if test="updated_atList != null">
+                        `updated_at` in
+                        <foreach collection="updated_atList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="updated_atSt !=null">
+                    `updated_at` >= #{updated_atSt} and
+                </if>
+                <if test="updated_atEd!=null">
+                    `updated_at` &lt;= #{updated_atEd} and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+
+    <select id="queryWjjwById" resultType="com.guohao.account.model.Wjjw">
+        select * from wjjw where id=#{id}
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `id`,
+        `machineName`,
+        `workPlace`,
+        `startTime`,
+        `endTime`,
+        `workHours`,
+        `unitPrice`,
+        `totalSum`,
+        `flatcarCount`,
+        `flatcarFee`,
+        `other`,
+        `workDate`,
+        `created_at`,
+        `updated_at`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof packageModel.wjjw$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.id==true">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.machineName==true">
+                        `machineName`,
+                    </if>
+                    <if test="fetchFields.fetchFields.workPlace==true">
+                        `workPlace`,
+                    </if>
+                    <if test="fetchFields.fetchFields.startTime==true">
+                        `startTime`,
+                    </if>
+                    <if test="fetchFields.fetchFields.endTime==true">
+                        `endTime`,
+                    </if>
+                    <if test="fetchFields.fetchFields.workHours==true">
+                        `workHours`,
+                    </if>
+                    <if test="fetchFields.fetchFields.unitPrice==true">
+                        `unitPrice`,
+                    </if>
+                    <if test="fetchFields.fetchFields.totalSum==true">
+                        `totalSum`,
+                    </if>
+                    <if test="fetchFields.fetchFields.flatcarCount==true">
+                        `flatcarCount`,
+                    </if>
+                    <if test="fetchFields.fetchFields.flatcarFee==true">
+                        `flatcarFee`,
+                    </if>
+                    <if test="fetchFields.fetchFields.other==true">
+                        `other`,
+                    </if>
+                    <if test="fetchFields.fetchFields.workDate==true">
+                        `workDate`,
+                    </if>
+                    <if test="fetchFields.fetchFields.created_at==true">
+                        `created_at`,
+                    </if>
+                    <if test="fetchFields.fetchFields.updated_at==true">
+                        `updated_at`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.id==null">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.machineName==null">
+                        `machineName`,
+                    </if>
+                    <if test="fetchFields.excludeFields.workPlace==null">
+                        `workPlace`,
+                    </if>
+                    <if test="fetchFields.excludeFields.startTime==null">
+                        `startTime`,
+                    </if>
+                    <if test="fetchFields.excludeFields.endTime==null">
+                        `endTime`,
+                    </if>
+                    <if test="fetchFields.excludeFields.workHours==null">
+                        `workHours`,
+                    </if>
+                    <if test="fetchFields.excludeFields.unitPrice==null">
+                        `unitPrice`,
+                    </if>
+                    <if test="fetchFields.excludeFields.totalSum==null">
+                        `totalSum`,
+                    </if>
+                    <if test="fetchFields.excludeFields.flatcarCount==null">
+                        `flatcarCount`,
+                    </if>
+                    <if test="fetchFields.excludeFields.flatcarFee==null">
+                        `flatcarFee`,
+                    </if>
+                    <if test="fetchFields.excludeFields.other==null">
+                        `other`,
+                    </if>
+                    <if test="fetchFields.excludeFields.workDate==null">
+                        `workDate`,
+                    </if>
+                    <if test="fetchFields.excludeFields.created_at==null">
+                        `created_at`,
+                    </if>
+                    <if test="fetchFields.excludeFields.updated_at==null">
+                        `updated_at`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof packageModel.wjjw$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+</mapper>

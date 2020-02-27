@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <springProperty scope="context" name="LOG_HOME" source="logHome"/>
+    <springProperty scope="context" name="GELF_NAME" source="gelfName"/>
+    <springProperty scope="context" name="UDP_URL" source="gelfUDPUrl"/>
+    <springProperty scope="context" name="SPRING_LOG_LEVEL" source="springLogLevel"/>
+    <springProperty scope="context" name="Log_MAXfILESIZE" source="logMaxFileSize"/>
+    <springProperty scope="context" name="Log_TOTALSIZECAP" source="logTotalSizeCap"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %5p | %t | %-55logger{55} ==> %m %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- info日志 appender  -->
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <FileNamePattern>${LOG_HOME}/info.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+            <maxFileSize>${Log_MAXfILESIZE}</maxFileSize>
+            <totalSizeCap>${Log_TOTALSIZECAP}</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %5p | %t | %-55logger{55} ==> %m %n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印INFO日志 -->
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- error日志 appender  -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <FileNamePattern>${LOG_HOME}/error.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+            <maxFileSize>${Log_MAXfILESIZE}</maxFileSize>
+            <totalSizeCap>${Log_TOTALSIZECAP}</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %5p | %t | %-55logger{55} ==> %m %n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印ERROR日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+
+    <appender name="official-site-monitor_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/iot-argus-monitor.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/official-site-monitor.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{MM-dd HH:mm:ss} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+<!--    <logger name="com.dingxiang.lot" additivity="false" level="${SPRING_LOG_LEVEL}">-->
+<!--        <appender-ref ref="ERROR"/>-->
+<!--        <appender-ref ref="INFO"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="cn.securitystack.ctucommom.monitor" additivity="false">-->
+<!--        <appender-ref ref="official-site-monitor_appender"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="com.dingxiang.lot.dao" level="INFO" />-->
+
+
+    <!-- 日志输出级别 -->
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="INFO"/>
+    </root>
+
+</configuration>
