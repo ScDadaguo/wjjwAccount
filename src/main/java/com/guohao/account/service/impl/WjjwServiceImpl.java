@@ -29,7 +29,7 @@ public class WjjwServiceImpl implements WjjwService {
     private String inputPath;
 
     @Value("${file.accessPath}")
-    private String accessPath;
+    private String accessFilePath;
 
 
     /**
@@ -48,6 +48,8 @@ public class WjjwServiceImpl implements WjjwService {
             if (!translateFileToLocal) {
                 return ResultUtil.getFailedResult("把文件写入到磁盘时出错");
             }
+            localPath = localPath.replace(inputPath, accessFilePath);
+            System.out.println(localPath);
             wjjw.setLocalPath(localPath.toString());
             wjjw.setFileName(file.getOriginalFilename());
         }
@@ -61,7 +63,7 @@ public class WjjwServiceImpl implements WjjwService {
             e.printStackTrace();
         }
         if (result > 0) {
-            return ResultUtil.getSuccessResult("账单上传成功");
+            return ResultUtil.getSuccessResult(wjjw);
         } else {
             return ResultUtil.getFailedResult("账单上传失败");
         }
@@ -80,6 +82,7 @@ public class WjjwServiceImpl implements WjjwService {
             if (!translateFileToLocal) {
                 return ResultUtil.getFailedResult("把文件写入到磁盘时出错");
             }
+            localPath = localPath.replace(inputPath, accessFilePath);
             wjjw.setLocalPath(localPath.toString());
             wjjw.setFileName(file.getOriginalFilename());
         }
@@ -93,15 +96,15 @@ public class WjjwServiceImpl implements WjjwService {
             e.printStackTrace();
         }
         if (result > 0) {
-            return ResultUtil.getSuccessResult("账单上传成功");
+            return ResultUtil.getSuccessResult(wjjw);
         } else {
             return ResultUtil.getFailedResult("账单上传失败");
         }
     }
 
     @Override
-    public List<Wjjw> queryWjjw() {
-        return wjjwMapper.queryWjjw();
+    public List<Wjjw> queryWjjw(String openId) {
+        return wjjwMapper.queryWjjw(openId);
     }
 
     @Override
@@ -155,11 +158,9 @@ public class WjjwServiceImpl implements WjjwService {
      */
     private String getLocalPath(MultipartFile file) {
         StringBuffer localPath = new StringBuffer();
-        StringBuffer acess
         String time = DateTime.now().toString(FORMAT);
         localPath.append(inputPath).append(SEPARATOR).append(time).append(SEPARATOR)
                 .append(UUID.randomUUID().toString()).append(SEPARATOR).append(getFileNameWithoutSuffix(file));
-
         return localPath.toString();
 
     }

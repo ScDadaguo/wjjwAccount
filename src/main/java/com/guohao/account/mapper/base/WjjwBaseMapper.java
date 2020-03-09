@@ -18,7 +18,7 @@ public interface WjjwBaseMapper {
 
     int update(Wjjw.UpdateBuilder object);
 
-    List<Wjjw> queryWjjw();
+    List<Wjjw> queryWjjw(String openId);
 
     Wjjw queryWjjwLimit1(Wjjw object);
 

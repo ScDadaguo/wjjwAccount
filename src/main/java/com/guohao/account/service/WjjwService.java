@@ -1,11 +1,7 @@
 package com.guohao.account.service;
 
-import com.guohao.account.mapper.WjjwMapper;
 import com.guohao.account.model.Wjjw;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface WjjwService {
@@ -26,7 +22,7 @@ public interface WjjwService {
     /**查询所有账单
      * @return
      */
-    List<Wjjw> queryWjjw();
+    List<Wjjw> queryWjjw(String openId);
 
     /**
      * 根据id删除账单

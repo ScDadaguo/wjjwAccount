@@ -68,6 +68,7 @@ public class Wjjw implements Serializable {
     */
     private java.math.BigDecimal totalSum;
 
+
     /**
     * 板车趟数
     * isNullAble:1
@@ -104,6 +105,8 @@ public class Wjjw implements Serializable {
     */
     private java.time.LocalDateTime updated_at;
 
+    private String openId;
+
 
     private MultipartFile file;
 
@@ -112,6 +115,14 @@ public class Wjjw implements Serializable {
     private String fileName;
 
 
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 
     public void setId(Integer id){this.id = id;}
 

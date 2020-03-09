@@ -61,6 +61,10 @@
                     <if test="updated_at!=null">
                         `updated_at`,
                     </if>
+                     <if test="openId!=null">
+                         `openId`,
+                    </if>
+
         </trim>
         )
         VALUES
@@ -113,6 +117,9 @@
                 </if>
                 <if test="updated_at!=null">
                     #{updated_at},
+                </if>
+                <if test="openId!=null">
+                    #{openId},
                 </if>
         </trim>
         )
@@ -167,6 +174,9 @@
             </if>
             <if test="updated_at != null">
                 `updated_at` = #{updated_at},
+            </if>
+            <if test="openId != null">
+                `openId` = #{openId},
             </if>
         </trim>
         WHERE
@@ -434,8 +444,8 @@
     </resultMap>
 
 
-    <select id="queryWjjw" resultMap="wjjwMap">
-        select * from wjjw;
+    <select id="queryWjjw" resultMap="wjjwMap" parameterType="String">
+        select * from wjjw where openId=#{openId} ORDER BY id DESC ;
     </select>
 
     <select id="queryWjjwLimit1" resultMap="wjjwMap">

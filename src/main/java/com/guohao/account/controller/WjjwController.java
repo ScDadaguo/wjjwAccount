@@ -1,17 +1,12 @@
 package com.guohao.account.controller;
 
-import com.guohao.account.mapper.WjjwMapper;
-import com.guohao.account.mapper.base.WjjwBaseMapper;
 import com.guohao.account.model.Wjjw;
 import com.guohao.account.service.WjjwService;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.slf4j.Logger;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,8 +78,9 @@ public class WjjwController {
      * @return
      */
     @RequestMapping(value = "/listWjjw",method =RequestMethod.GET)
-    public Map<String,Object> listWjjw() {
-        List<Wjjw> list=wjjwService.queryWjjw();
+    public Map<String,Object> listWjjw(@RequestParam String openId) {
+
+        List<Wjjw> list=wjjwService.queryWjjw(openId);
         Map<String, Object> map = new HashMap<>();
         map.put("wjjwList", list);
         return map;
@@ -122,7 +118,7 @@ public class WjjwController {
 
     @RequestMapping("/uploadimg")
     public String uploadimg()  {
-        return "/uploadimg/2020-02-13/4a991b9d-f2ee-4463-afb2-86933e46f6be/wx6266ee9fca6eec27.o6zAJs2GcyefbUpGRcgCkG7el5iY.V4jh0laB5H0U6c1c8c4843349798144bb172593132fa.png";
+        return "/uploadimg/static/image/guohao.png";
     }
 
 
