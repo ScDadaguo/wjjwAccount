@@ -38,4 +38,5 @@ public interface WjjwService {
      */
     Wjjw queryWjjwById(Integer id);
 
+
 }

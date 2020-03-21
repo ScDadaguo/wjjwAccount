@@ -92,26 +92,52 @@
             <version>1.2.31</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.arronlong</groupId>
+            <artifactId>httpclientutil</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
 
     </dependencies>
 
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 <!--    <build>-->
 <!--        <plugins>-->
 <!--            <plugin>-->
 <!--                <groupId>org.springframework.boot</groupId>-->
 <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <version>2.0.2.RELEASE</version>-->
+<!--                <configuration>-->
+<!--                    <mainClass>com.XXX.XXX.App</mainClass>-->
+<!--                </configuration>-->
 <!--                <executions>-->
 <!--                    <execution>-->
 <!--                        <goals>-->
 <!--                            <goal>repackage</goal>-->
-<!--                            <goal>build-info</goal>-->
 <!--                        </goals>-->
 <!--                    </execution>-->
 <!--                </executions>-->
 <!--            </plugin>-->
 <!--        </plugins>-->
 <!--    </build>-->
+
 
 
 
