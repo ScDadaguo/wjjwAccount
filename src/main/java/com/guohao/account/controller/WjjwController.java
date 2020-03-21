@@ -1,5 +1,6 @@
 package com.guohao.account.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.arronlong.httpclientutil.HttpClientUtil;
 import com.arronlong.httpclientutil.builder.HCB;
 import com.arronlong.httpclientutil.common.HttpConfig;
@@ -7,6 +8,8 @@ import com.arronlong.httpclientutil.common.HttpHeader;
 import com.arronlong.httpclientutil.common.HttpResult;
 import com.arronlong.httpclientutil.common.SSLs.SSLProtocolVersion;
 import com.arronlong.httpclientutil.exception.HttpProcessException;
+import com.guohao.account.constant.Constant;
+import com.guohao.account.model.LoginReponse;
 import com.guohao.account.model.Wjjw;
 import com.guohao.account.service.WjjwService;
 import org.apache.http.Header;
@@ -170,6 +173,8 @@ public class WjjwController {
                 ;
 
         String result2 = HttpClientUtil.get(config);   //post请求
+        LoginReponse reponse = JSON.parseObject(result2, LoginReponse.class);
+        Constant.OPEN_ID= reponse.getData().getOpenId();
         System.out.println(result2);
         return result2;
     }

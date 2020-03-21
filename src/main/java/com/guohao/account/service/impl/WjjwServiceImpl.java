@@ -1,5 +1,6 @@
 package com.guohao.account.service.impl;
 
+import com.guohao.account.constant.Constant;
 import com.guohao.account.mapper.WjjwMapper;
 import com.guohao.account.model.Wjjw;
 import com.guohao.account.service.WjjwService;
@@ -74,6 +75,7 @@ public class WjjwServiceImpl implements WjjwService {
 
     @Override
     public Object updateWjjw(Wjjw wjjw) {
+        wjjw.setOpenId(Constant.OPEN_ID);
         wjjw.setUpdated_at(LocalDateTime.now());
         if (wjjw.getFile() != null) {
             MultipartFile file = wjjw.getFile();
