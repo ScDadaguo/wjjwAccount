@@ -5,13 +5,13 @@ import com.arronlong.httpclientutil.HttpClientUtil;
 import com.arronlong.httpclientutil.builder.HCB;
 import com.arronlong.httpclientutil.common.HttpConfig;
 import com.arronlong.httpclientutil.common.HttpHeader;
-import com.arronlong.httpclientutil.common.HttpResult;
 import com.arronlong.httpclientutil.common.SSLs.SSLProtocolVersion;
 import com.arronlong.httpclientutil.exception.HttpProcessException;
 import com.guohao.account.constant.Constant;
 import com.guohao.account.model.LoginReponse;
 import com.guohao.account.model.Wjjw;
 import com.guohao.account.service.WjjwService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Header;
 import org.apache.http.client.HttpClient;
 import org.slf4j.Logger;
@@ -174,7 +174,9 @@ public class WjjwController {
 
         String result2 = HttpClientUtil.get(config);   //post请求
         LoginReponse reponse = JSON.parseObject(result2, LoginReponse.class);
-        Constant.OPEN_ID= reponse.getData().getOpenId();
+        log.info("response:{}",reponse);
+        Constant.OPEN_ID = reponse.getOpenId();
+        log.info("reslut:{}", result2);
         System.out.println(result2);
         return result2;
     }
