@@ -15,8 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class WjjwServiceImpl implements WjjwService {
@@ -177,6 +180,15 @@ public class WjjwServiceImpl implements WjjwService {
         String baseName = FilenameUtils.getBaseName(organFileName);
         String ext = FilenameUtils.getExtension(organFileName);
         return baseName+"."+ext;
+    }
+
+    public static void main(String[] args) {
+        Set<String> strings = new HashSet<>();
+        strings.add("1");
+        strings.add("2");
+        strings.add("3");
+        List<Long> longs=strings.stream().map(Long::valueOf).collect(Collectors.toList());
+        System.out.println(longs);
     }
 
 

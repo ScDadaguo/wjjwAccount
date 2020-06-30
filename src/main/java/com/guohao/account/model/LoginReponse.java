@@ -22,10 +22,9 @@ public class LoginReponse {
 
     @Override
     public String toString() {
-        return "Data{" +
-                "openId='" + openid + '\'' +
+        return "LoginReponse{" +
+                "openid='" + openid + '\'' +
                 ", session_key='" + session_key + '\'' +
                 '}';
     }
-
 }
