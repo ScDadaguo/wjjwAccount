@@ -22,7 +22,7 @@
         <lombok.version>1.16.6</lombok.version>
         <druid.spring-boot.version>1.1.16</druid.spring-boot.version>
         <joda-time.version>2.9.9</joda-time.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
     </properties>
 
 
